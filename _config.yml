@@ -7,7 +7,7 @@
 
 # Site settings
 
-title: Blues 
+title: BluesBlog 
 email: 47096007@qq.com 
 description: the blog of blues # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -16,7 +16,7 @@ description: the blog of blues # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: 
-github_username: bluesnoblue
+github_username:  bluesnoblue
 
 # Build settings
 markdown: kramdown
