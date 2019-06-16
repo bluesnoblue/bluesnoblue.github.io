@@ -359,9 +359,7 @@ testcase类提供了几个断言方法来检查和报告失败。下表列出了
 
 以上的断言方法都接受一个msg参数，如果指定了该参数，它将用作失败时的错误消息。
 
-
-
-#组织测试
+# 组织测试
 
 class unittest.TestSuite(tests=())
 
@@ -392,6 +390,6 @@ countTestCases()
 
 在TestSuite对象的典型用法中，run()方法由TestRunnerr调用，而不是由最终用户测试工具调用。
 
-#载入和执行测试
+# 载入和执行测试
 
 待更新....
