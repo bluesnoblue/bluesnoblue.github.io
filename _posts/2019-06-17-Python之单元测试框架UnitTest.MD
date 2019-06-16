@@ -5,7 +5,7 @@ date:   2019-06-17 01:13:00 +0800
 categories: python, test
 ---
 
-#简介
+# 简介
 
 **测试脚手架（test fixture）:**
 测试脚手架表示为了开展一项或多项测试所需要进行的准备工作，以及所有相关的清理操作。举个例子，这可能包含创建临时或代理的数据库、目录，再或者启动一个服务器进程。
@@ -22,7 +22,7 @@ categories: python, test
 
 
 
-#基本实例
+# 基本实例
 
 unittest模块提供了一系列创建和运行测试的工具。这一段落演示了这些工具的一小部分，但也足以满足大部分用户的需求。
 这是一段简短的代码，用来测试三种字符串方法
@@ -69,7 +69,7 @@ Ran 3 tests in 0.000s
 OK
 ```
 
-#组织你的测试代码
+# 组织你的测试代码
 
 单元测试的构建单位是 test cases ：独立的、包含执行条件与正确性检查的方案。在 unittest 中，测试用例表示为 unittest.TestCase 的实例。通过编写 TestCase 的子类或使用 FunctionTestCase 编写你自己的测试用例。
 
@@ -189,7 +189,7 @@ testcase = unittest.FunctionTestCase(testSomething,
 ```
 在某些情况下，现有测试可能是使用doctest模块编写的。如果是这样，doctest提供了一个doctestsuite类，该类可以从现有的基于doctest的测试中自动生成unittest.testsuite实例。
 
-#跳过测试与预计的失败
+# 跳过测试与预计的失败
 
 UnitTest支持跳过单个测试方法，甚至跳过整个测试类。此外，它还支持将测试标记为“预期的失败(expected failure)”，即破坏并将失败的测试，但不应计为测试结果(TestResult)的失败。 
 
