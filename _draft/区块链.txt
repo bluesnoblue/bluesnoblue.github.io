@@ -1,0 +1,127 @@
+写在开始之前
+
+记住，区块链是一个 不可变的、有序的 被称为块的记录链。它们可以包含交易、文件或任何您喜欢的数据。
+但重要的是，他们用哈希 一起被链接在一起。
+
+step1.创建一个区块链
+
+描述区块链
+
+我们要创建一个BlockChain类，他的构造函数创建一个初始化的空列表（用于储存我们的区块链），并且另一个存储交易。
+下面是我们这个类的实例:
+
+blockchain.py
+
+class BlockChain(object):
+    def __init__(self):
+        self.chain = []
+        self.current_transactions = []
+		
+    def new_block(self):
+		# 创建一个新的区块到区块链中
+		pass
+		
+    def new_transaction(self, sender, recipient, amount):
+		# 创建一笔新的交易到下一个被挖掘的区块中
+		pass
+
+    @staticmethod
+    def hash(block):
+        # 给一个区块生成 SHA-256 值
+        block_string = json.dumps(block, sort_keys=True).encode()
+        return hashlib.sha256(block_string).hexdigest()
+
+    @property
+    def last_block(self):
+        # 返回最后一个区块
+		pass
+		
+我们的 Blockchain 类负责管理链式数据，它会存储交易并且还有添加新的区块到链式数据的Method。
+让我们开始扩充更多Method
+
+块是什么样的?
+
+每一个块都有一个index，一个unix时间戳，一个事务列表，一个校验，和前一个块的hash散列。
+
+下面是一个Block的例子：
+
+block = {
+	'index': 1,
+    'timestamp': 1506057125.900785,
+    'transactions': [
+        {
+            'sender': "8527147fe1f5426f9dd545de4b27ee00",
+            'recipient': "a77f5cdfa2934df3954a5c7c7da5df1f",
+            'amount': 5,
+        }
+    ],
+    'proof': 324984774000,
+    'previous_hash': "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+}
+
+在这一点上，一个 区块链 的概念应该是明显的 - 每个新块都包含在其内的前一个块的 散列 。 
+这是至关重要的，因为这是 区块链 不可改变的原因：如果攻击者损坏 区块链 中较早的块，
+则所有后续块将包含不正确的哈希值。
+
+
+添加交易到区块
+
+我们将需要一个添加交易到区块的方式。我们的 new_transaction()方法的责任就是这个， 并且它非常的简单:
+
+class BlockChain(object):
+	
+	...
+	
+    def new_transaction(self, sender, recipient, amount):
+        """
+        创建一笔新的交易到下一个被挖掘的区块中
+        :param sender: <str> 发送人的地址
+        :param recipient: <str> 接收人的地址
+        :param amount: <int> 金额
+        :return: <int> 持有本次交易的区块索引
+        """
+
+        self.current_transactions.append({
+            'sender': sender,
+            'recipient': recipient,
+            'amount': amount
+        })
+
+        return self.last_block['index'] + 1
+		
+		
+new_transaction() 方法添加了交易到列表，它返回了交易将被添加到的区块的索引---讲开采下一个这对稍后对提交交易的用户有用。
+		
+创建新的区块
+		
+当我们的 Blockchain 被实例化后，我们需要将 创世 区块（一个没有前导区块的区块）添加进去进去。
+我们还需要向我们的起源块添加一个 证明，这是挖矿的结果(或工作证明)。 我们稍后会详细讨论挖矿。
+除了在构造函数中创建 创世 区块外，我们还会补全 new_block() 、new_transaction() 和 hash() 函数：
+
+		
+import hashlib
+import json
+from time import time
+
+class BlockChain(object):
+    def __init__(self):
+        self.chain = []
+        self.current_transactions = []
+        self.nodes = set()
+        # 创建创世区块
+        self.new_block(proof=100, previous_hash=1)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
