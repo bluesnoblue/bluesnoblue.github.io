@@ -235,7 +235,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
 ~~~
 
-#　数据层
+# 数据层
 
 某些接口有多组测试参数，可以用将测试参数或预期结果进行参数化，结合ddt模块进行维护。
 
